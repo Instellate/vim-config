@@ -1,7 +1,11 @@
 # Neovim configuration files
 This is a directory that contains a bunch of configuration files for my neovim setup.
 This configuration is currently configured and tested for linux wayland.  
-To use it outside of wayland and linux, change the clipboard manager specified at `init.lua` and change the option for `vim.g.clipboard`.
+
+If you want to use this configuration yourself, you might need to change some of the configuration.  
+If you are on linux wayland. You will need to install `wl-clipboard` (some distributions calls it `wl-paste`).
+If you are not on wayland or linux. Change the clipboard manager (`vim.g.clipboard`) specified at `init.lua` to a clipboard manager supported by your platform or disable `unnamedplus`.  
+Neovim specifies supported clipboard managers at `:help clipboard`.
 
 This also contains a plugin I made by myself for a window that provides renaming in a way I like.
 
