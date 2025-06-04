@@ -5,8 +5,26 @@ local renamer_nvim = {}
 ---@type { [integer]: fun() }
 renamer_nvim._callbacks = {}
 
-function renamer_nvim.setup(_opts)
-    vim.api.nvim_set_keymap('n', '<leader>gv', '<cmd>lua require("renamer_nvim").create_window()<CR>', { noremap = true })
+---@class Config
+---@field keymap ConfigKeymap
+
+---@class ConfigKeymap
+---@field rename string
+
+function get_or_default(table, name, value)
+    if table[name] then
+        return table[name]
+    else
+        return value
+    end
+end
+
+---@param opts Config
+function renamer_nvim.setup(opts)
+    local rename_keymap = get_or_default(opts.keymap, 'rename', '<leader>gv')
+
+    vim.api.nvim_set_keymap('n', rename_keymap, '<cmd>lua require("renamer_nvim").create_window()<CR>',
+        { noremap = true })
 end
 
 function renamer_nvim.create_window()
@@ -28,12 +46,14 @@ function renamer_nvim.create_window()
             vim.cmd('startinsert')
             vim.cmd('normal $')
 
-            renamer_nvim._callbacks[bufnr] = function ()
+            renamer_nvim._callbacks[bufnr] = function()
                 vim.api.nvim_win_close(win_id, true)
             end
 
-            vim.api.nvim_buf_set_keymap(bufnr, 'i', '<CR>', '<cmd>lua require("plenary.popup").execute_callback(' .. bufnr .. ')<CR>', { noremap = true })
-            vim.api.nvim_buf_set_keymap(bufnr, 'i', '<Esc>', '<cmd>lua require("renamer_nvim").cancel_rename(' .. bufnr .. ')<CR>', { noremap = true })
+            vim.api.nvim_buf_set_keymap(bufnr, 'i', '<CR>',
+                '<cmd>lua require("plenary.popup").execute_callback(' .. bufnr .. ')<CR>', { noremap = true })
+            vim.api.nvim_buf_set_keymap(bufnr, 'i', '<Esc>',
+                '<cmd>lua require("renamer_nvim").cancel_rename(' .. bufnr .. ')<CR>', { noremap = true })
         end
 
     })
