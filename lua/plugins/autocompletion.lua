@@ -39,6 +39,7 @@ return {
     init = function()
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         local lspconfig = require('lspconfig')
+        local elixirls = require('utility.elixirls').setup()
 
         local languages = {
             ['clangd'] = {},
@@ -51,8 +52,10 @@ return {
                     enabled = true,
                 }
             },
-            ['elixirls'] = {},
             ['lua_ls'] = {},
+            ['elixirls'] = {
+                cmd = { elixirls }
+            },
         }
 
         vim.lsp.inlay_hint.enable(true)
