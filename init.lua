@@ -7,7 +7,6 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 
 -- Auto indent detections
-vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.cindent = true
 
