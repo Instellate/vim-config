@@ -56,6 +56,11 @@ return {
             ['elixirls'] = {
                 cmd = { elixirls }
             },
+            ['cmake'] = {},
+            ['qmlls'] = {
+                cmd = { 'qmlls6' }
+            },
+            ['docker_language_server'] = {},
         }
 
         vim.lsp.inlay_hint.enable(true)
