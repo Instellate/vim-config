@@ -60,7 +60,8 @@ return {
             ['qmlls'] = {
                 cmd = { 'qmlls6' }
             },
-            ['docker_language_server'] = {},
+            ['dockerls'] = {},
+            ['docker_compose_language_service'] = {},
         }
 
         vim.lsp.inlay_hint.enable(true)
