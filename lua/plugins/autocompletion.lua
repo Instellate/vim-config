@@ -37,9 +37,13 @@ return {
         }
     end,
     init = function()
+        require('lspconfig')
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        local lspconfig = require('lspconfig')
         local elixirls = require('utility.elixirls').setup()
+
+        vim.lsp.config('*', {
+            capabilities = capabilities
+        })
 
         local languages = {
             ['clangd'] = {},
@@ -66,8 +70,8 @@ return {
 
         vim.lsp.inlay_hint.enable(true)
         for lang, config in pairs(languages) do
-            config['capabilities'] = capabilities
-            lspconfig[lang].setup(config)
+            vim.lsp.config(lang, config)
+            vim.lsp.enable(lang)
         end
     end
 }
