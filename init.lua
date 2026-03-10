@@ -19,6 +19,7 @@ vim.g.clipboard = 'wl-copy'
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<M-Up>', ':m .-2<CR>==', { noremap = true })
 vim.api.nvim_set_keymap('n', '<M-Down>', ':m .+1<CR>==', { noremap = true })
+vim.api.nvim_set_keymap('i', '<S-Tab>', '<C-D>', { noremap = true })
 
 -- LSP Keymaps
 vim.api.nvim_set_keymap('n', 'grf', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true })
@@ -31,7 +32,7 @@ end, 1000)
 vim.cmd('colorscheme zephyr')
 vim.cmd('tnoremap <Esc> <C-\\><C-n>')
 
--- User commands 
+-- User commands
 vim.api.nvim_create_user_command('OpenTerm', function()
     vim.cmd('rightbelow split')
     vim.cmd('resize 15')
