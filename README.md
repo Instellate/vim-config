@@ -20,6 +20,7 @@ This also contains a plugin I made by myself for a window that provides renaming
 - [Markdown previews](https://github.com/OXY2DEV/markview.nvim): Provides previews for markdowns and other languages.
 - [Wakatime](https://github.com/wakatime/vim-wakatime): Provides wakatime statistics
 - [Zephyr](https://github.com/glepnir/zephyr-nvim): A colorscheme
+- [Mason](https://github.com/mason-org/mason.nvim): Package manager for LSPs and similar
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 

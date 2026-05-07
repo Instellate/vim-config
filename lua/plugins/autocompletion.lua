@@ -39,39 +39,24 @@ return {
     init = function()
         require('lspconfig')
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        local elixirls = require('utility.elixirls').setup()
 
         vim.lsp.config('*', {
             capabilities = capabilities
         })
-
-        local languages = {
-            ['clangd'] = {},
-            ['ts_ls'] = {},
-            ['bashls'] = {},
-            ['csharp_ls'] = {},
-            ['rust_analyzer'] = {
-                diagnostic = true,
-                inlay_hints = {
-                    enabled = true,
-                }
-            },
-            ['lua_ls'] = {},
-            ['elixirls'] = {
-                cmd = { elixirls }
-            },
-            ['cmake'] = {},
-            ['qmlls'] = {
-                cmd = { 'qmlls6' }
-            },
-            ['dockerls'] = {},
-            ['docker_compose_language_service'] = {},
-        }
-
         vim.lsp.inlay_hint.enable(true)
-        for lang, config in pairs(languages) do
-            vim.lsp.config(lang, config)
-            vim.lsp.enable(lang)
-        end
+
+        -- local languages = {
+        --     ['rust_analyzer'] = {
+        --         diagnostic = true,
+        --         inlay_hints = {
+        --             enabled = true,
+        --         }
+        --     },
+        -- }
+        --
+        -- for lang, config in pairs(languages) do
+        --     vim.lsp.config(lang, config)
+        --     vim.lsp.enable(lang)
+        -- end
     end
 }
